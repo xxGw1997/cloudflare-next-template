@@ -27,11 +27,6 @@
   ],
   "r2_buckets": [
 		{
-			"bucket_name": "template-bucket",
-			"binding": "TEMPLATE_BUCKET",
-			"remote": true
-		},
-		{
 			"bucket_name": "open-next-cache-template",
 			"binding": "NEXT_INC_CACHE_R2_BUCKET",
 			"remote": true
