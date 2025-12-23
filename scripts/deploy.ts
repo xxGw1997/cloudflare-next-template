@@ -8,6 +8,7 @@ const environments = [
   'AUTH_SECRET',
   'AUTH_GOOGLE_ID',
   'AUTH_GOOGLE_SECRET',
+  'AUTH_TRUST_HOST',
   'NEXT_PUBLIC_BASE_URL',
   'NEXT_PUBLIC_R2_DOMAIN',
 ]
@@ -29,7 +30,7 @@ const validateEnvironment = () => {
 const migrateDatabase = () => {
   console.log('📝 Migrating remote database...')
   try {
-    execSync('pnpm run db:migrate-remote', { stdio: 'inherit' })
+    execSync('pnpm run db:mr', { stdio: 'inherit' })
     console.log('✅ Database migration completed successfully')
   } catch (error) {
     console.error('❌ Database migration failed:', error)
@@ -85,7 +86,7 @@ const pushWorkerSecret = () => {
 }
 
 /**
- * Deploy the Pages app
+ * Deploy the Worker app
  */
 const deployWorkers = () => {
   console.log('🚧 Deploying to Cloudflare Pages...')
