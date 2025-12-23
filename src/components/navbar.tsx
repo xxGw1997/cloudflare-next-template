@@ -2,15 +2,10 @@ import { cn } from "@/lib/utils";
 
 import { AuthInlineActions } from "./auth-actions";
 import ThemeSwitcher from "./theme-switcher";
+import Logo from "./logo";
+import MobileNav from "./mobile-nav";
 
 export default async function Navbar({ className }: { className?: string }) {
-  const menuContentDesktop = (
-    <div className="flex items-center gap-1.5">
-      <AuthInlineActions />
-      <ThemeSwitcher />
-    </div>
-  );
-
   return (
     <nav
       className={cn(
@@ -21,11 +16,16 @@ export default async function Navbar({ className }: { className?: string }) {
     >
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 sm:gap-3">
         <div className="hidden items-center gap-3 sm:flex">
-          <div className="flex flex-1 items-center gap-3">LOGO</div>
-          {menuContentDesktop}
+          <div className="flex flex-1 items-center gap-3">
+            <Logo />
+          </div>
+          <div className="flex items-center gap-1.5">
+            <AuthInlineActions />
+            <ThemeSwitcher />
+          </div>
         </div>
 
-        {/* <MobileNav /> */}
+        <MobileNav />
       </div>
     </nav>
   );

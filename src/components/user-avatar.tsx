@@ -10,7 +10,7 @@ export function UserAvatar({ name, avatar }: UserAvatarProps) {
   const fallback = name ? <span>{name.charAt(0)}</span> : <UserIcon />;
 
   return (
-    <Avatar>
+    <Avatar className="h-8 w-8">
       <AvatarImage src={avatar || undefined} />
       <AvatarFallback>{fallback}</AvatarFallback>
     </Avatar>

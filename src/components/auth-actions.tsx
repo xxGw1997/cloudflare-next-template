@@ -7,19 +7,11 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 import { useAuthContext } from "./providers/auth-provider";
 import { Button } from "./ui/button";
@@ -70,23 +62,24 @@ export function AccountDialog() {
   const avatar = userInfo.user?.image;
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="icon" className="rounded-full">
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button variant="ghost" size="icon" >
           <UserAvatar name={name} avatar={avatar} />
         </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <DropdownMenuLabel>Welcome, {name}</DropdownMenuLabel>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem>{email}</DropdownMenuItem>
-        <DropdownMenuItem onClick={() => signOut()}>
-          Log out
-          <DropdownMenuShortcut>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Welcome, {name}</DialogTitle>
+          <DialogDescription>Email: {email}</DialogDescription>
+        </DialogHeader>
+        <DialogFooter>
+          <Button variant="link" onClick={() => signOut()}>
             <LogOut />
-          </DropdownMenuShortcut>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+            Log out
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
   );
 }
