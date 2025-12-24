@@ -1,6 +1,8 @@
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import NextAuth, { DefaultSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import GithubProvider from "next-auth/providers/github";
+import ResendProvider from 'next-auth/providers/resend'
 
 import {
   accounts,
@@ -23,7 +25,17 @@ export const { auth, handlers, signIn, signOut } = NextAuth(() => {
   const db = createDb();
 
   return {
-    providers: [GoogleProvider],
+    providers: [
+      GoogleProvider,
+      GithubProvider({
+        clientId: process.env.AUTH_GITHUB_CLIENT_ID as string,
+        clientSecret: process.env.AUTH_GITHUB_CLIENT_SECRET as string,
+      }),
+      ResendProvider({
+        apiKey: process.env.AUTH_RESEND_KEY as string,
+        from: "no-reply@88boy.lol"
+      })
+    ],
     adapter: DrizzleAdapter(db, {
       usersTable: users,
       accountsTable: accounts,
