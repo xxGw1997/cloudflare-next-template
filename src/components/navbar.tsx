@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 
 import { AuthInlineActions } from "./auth-actions";
 import ThemeSwitcher from "./theme-switcher";
+import LocaleSwitcher from "./locale-switcher";
 import Logo from "./logo";
 import MobileNav from "./mobile-nav";
 
@@ -21,6 +22,7 @@ export default async function Navbar({ className }: { className?: string }) {
           </div>
           <div className="flex items-center gap-1.5">
             <AuthInlineActions />
+            <LocaleSwitcher />
             <ThemeSwitcher />
           </div>
         </div>

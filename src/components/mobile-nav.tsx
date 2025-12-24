@@ -16,6 +16,7 @@ import Logo from "./logo";
 import { AuthInlineActions } from "./auth-actions";
 import { Button } from "./ui/button";
 import ThemeSwitcher from "./theme-switcher";
+import LocaleSwitcher from "./locale-switcher";
 
 export default function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -35,6 +36,10 @@ export default function MobileNav() {
             <DropdownMenuLabel className="flex justify-center">
               <AuthInlineActions />
             </DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem className="flex justify-center">
+              <LocaleSwitcher />
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem className="flex justify-center">
               <ThemeSwitcher />
